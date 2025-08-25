@@ -38,6 +38,7 @@ class _LandingPageState extends State<LandingPage> {
 
 
     return Scaffold(
+      extendBody: true,
       appBar: CustomAppbar(),
       drawer: CustomDrawer(),
       bottomNavigationBar: CustomAppBottomBar(),
