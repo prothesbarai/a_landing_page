@@ -5,6 +5,9 @@ import 'package:a_landing_page/widgets/custom_floating_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/section_title.dart';
+import '../store_page/store_page.dart';
+
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -109,14 +112,17 @@ class _LandingPageState extends State<LandingPage> {
 
                     _rectangleItemsBuilder(context, Colors.brown, Icons.account_balance, "title", "subTitle",5),
 
-                    //SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
+                     SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.brown, productImg3, "Laptop",6),
+                    SectionTitle(title: "title2", storePage: "storePage2", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.blueGrey, productImg5, "Product",7),
+                    SectionTitle(title: "title3", storePage: "storePage3", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.indigo, productImg4, "Product",8),
+                    SectionTitle(title: "title4", storePage: "storePage4", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.blueGrey, productImg3, "Product",9),
 
 
-
+                    SizedBox(height: 30,)
 
                   ],
                 )
