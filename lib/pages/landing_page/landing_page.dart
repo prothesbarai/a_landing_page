@@ -15,6 +15,10 @@ class LandingPage extends StatelessWidget {
       bottomNavigationBar: CustomAppBottomBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CustomFloatingButton(),
+
+      body: Column(
+
+      ),
     );
   }
 }

@@ -58,6 +58,7 @@ class CustomDrawer extends StatelessWidget {
     return ListTile(
       title: Text(title,style: TextStyle(color: Colors.white),),
       leading: Icon(icon,color: Colors.white,),
+      onTap: (){},
     );
   }
 
