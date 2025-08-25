@@ -5,6 +5,62 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer();
+    return Drawer(
+      backgroundColor: Colors.black.withValues(alpha: 0.2),
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          DrawerHeader(
+            decoration: UnderlineTabIndicator(borderSide: BorderSide(color: Colors.pink,width: 1)),
+            child: Row(
+                children: [
+                  CircleAvatar(radius: 40,backgroundColor: Colors.pink,child: Icon(Icons.account_circle,size: 60,),),
+                  SizedBox(width: 10,),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Profile Name",style: TextStyle(color: Colors.white,fontSize: 20),overflow: TextOverflow.ellipsis,),
+                        SizedBox(height: 5,),
+                        Text("8801xxxxxxxxx",style: TextStyle(color: Colors.white,fontSize: 20),overflow: TextOverflow.ellipsis,),
+                      ],
+                    ),
+                  )
+                ],
+              )
+          ),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+           Divider(color: Colors.pink,thickness:1.5,),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home),
+        ],
+      ),
+    );
   }
+
+
+
+  Widget _buildDrawerItems(BuildContext context,String title,IconData icon){
+    return ListTile(
+      title: Text(title,style: TextStyle(color: Colors.white),),
+      leading: Icon(icon,color: Colors.white,),
+    );
+  }
+
 }
+
+
