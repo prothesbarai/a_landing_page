@@ -110,6 +110,7 @@ class _LandingPageState extends State<LandingPage> {
 
                     ),
 
+                    SectionTitle(title: "title0", storePage: "storePage0", pageRoute: StorePage()),
                     _rectangleItemsBuilder(context, Colors.brown, Icons.account_balance, "title", "subTitle",5),
 
                      SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
@@ -147,7 +148,7 @@ class _LandingPageState extends State<LandingPage> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: Container(
               width: MediaQuery.of(context).size.width / 2.5,
               decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
@@ -185,7 +186,7 @@ class _LandingPageState extends State<LandingPage> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: Container(
               width: MediaQuery.of(context).size.width / 3,
               decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
