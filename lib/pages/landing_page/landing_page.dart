@@ -62,6 +62,7 @@ class _LandingPageState extends State<LandingPage> {
                       itemCount: itemCount,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:4, childAspectRatio: aspectRatio),
                       shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
 
                         if(!showAll && index == 7){
@@ -106,13 +107,13 @@ class _LandingPageState extends State<LandingPage> {
 
                     ),
 
-                    _rectangleItemsBuilder(context, Colors.brown, Icons.account_balance, "title", "subTitle"),
+                    _rectangleItemsBuilder(context, Colors.brown, Icons.account_balance, "title", "subTitle",5),
 
                     //SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
-                    _squareItemsBuilder(context, Colors.brown, productImg3, "Laptop"),
-                    _squareItemsBuilder(context, Colors.blueGrey, productImg5, "Product"),
-                    _squareItemsBuilder(context, Colors.indigo, productImg4, "Product"),
-                    _squareItemsBuilder(context, Colors.blueGrey, productImg3, "Product"),
+                    _squareItemsBuilder(context, Colors.brown, productImg3, "Laptop",6),
+                    _squareItemsBuilder(context, Colors.blueGrey, productImg5, "Product",7),
+                    _squareItemsBuilder(context, Colors.indigo, productImg4, "Product",8),
+                    _squareItemsBuilder(context, Colors.blueGrey, productImg3, "Product",9),
 
 
 
@@ -131,12 +132,12 @@ class _LandingPageState extends State<LandingPage> {
 
 
   // Rectangle Product Items Builder
-  Widget _rectangleItemsBuilder(BuildContext context,Color color, IconData icon, String title, String subTitle){
+  Widget _rectangleItemsBuilder(BuildContext context,Color color, IconData icon, String title, String subTitle,int itemCount){
     return SizedBox(
       height: 100,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 8,
+        itemCount: itemCount,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -169,12 +170,12 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   // Square Product Items Builder
-  Widget _squareItemsBuilder(BuildContext context, Color color, String imgUrl, String title){
+  Widget _squareItemsBuilder(BuildContext context, Color color, String imgUrl, String title,int itemCount){
     return SizedBox(
       height: 170,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 8,
+        itemCount: itemCount,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
