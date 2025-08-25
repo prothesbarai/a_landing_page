@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/custom_app_bottom_bar.dart';
 import '../../widgets/custom_appbar.dart';
-import '../../widgets/custom_drawer.dart';
 import '../../widgets/custom_floating_button.dart';
 
 class StorePage extends StatelessWidget {
@@ -10,8 +9,7 @@ class StorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
-      drawer: CustomDrawer(),
+      appBar: CustomAppbar(pageTitle: "Store Page",),
       bottomNavigationBar: CustomAppBottomBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CustomFloatingButton(),

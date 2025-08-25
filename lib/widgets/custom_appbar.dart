@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget{
-  const CustomAppbar({super.key});
+  final String pageTitle;
+  const CustomAppbar({super.key,required this.pageTitle});
 
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
@@ -14,7 +15,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Landing Page"),
+      title: Text(widget.pageTitle),
       actions: [IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))],
     );
   }

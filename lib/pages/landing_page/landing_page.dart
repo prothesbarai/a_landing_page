@@ -42,7 +42,7 @@ class _LandingPageState extends State<LandingPage> {
 
     return Scaffold(
       extendBody: true,
-      appBar: CustomAppbar(),
+      appBar: CustomAppbar(pageTitle: "Landing Page",),
       drawer: CustomDrawer(),
       bottomNavigationBar: CustomAppBottomBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
