@@ -15,6 +15,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text("Landing Page"),
+      actions: [IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))],
     );
   }
 }

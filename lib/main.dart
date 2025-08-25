@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        appBarTheme: AppBarThemeData(backgroundColor: Colors.pinkAccent,iconTheme: IconThemeData(color: Colors.white),centerTitle: true,),
+        drawerTheme: DrawerThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomRight:Radius.circular(20), ),)),
         useMaterial3: false,
       ),
       home: SplashScreen(),
