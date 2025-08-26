@@ -111,7 +111,7 @@ class _LandingPageState extends State<LandingPage> {
                     ),
 
                     SectionTitle(title: "title0", storePage: "storePage0", pageRoute: StorePage()),
-                    _rectangleItemsBuilder(context, Colors.brown, Icons.account_balance, "title", "subTitle",5),
+                    _rectangleItemsBuilder(context, Color(0xff5e024f), Icons.account_balance, "title", "subTitle",5),
 
                      SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.brown, productImg3, "Laptop",6),
@@ -120,7 +120,7 @@ class _LandingPageState extends State<LandingPage> {
                     SectionTitle(title: "title3", storePage: "storePage3", pageRoute: StorePage()),
                     _squareItemsBuilder(context, Colors.indigo, productImg4, "Product",8),
                     SectionTitle(title: "title4", storePage: "storePage4", pageRoute: StorePage()),
-                    _squareItemsBuilder(context, Colors.blueGrey, productImg3, "Product",9),
+                    _squareItemsBuilder(context, Colors.teal, productImg3, "Product",9),
 
 
                     SizedBox(height: 30,)
@@ -161,11 +161,11 @@ class _LandingPageState extends State<LandingPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(title,style: TextStyle(color: Colors.white,fontSize: 20),),
-                      Text(subTitle,style: TextStyle(color: Colors.white,fontSize: 20),)
+                      Text(subTitle,style: TextStyle(color: Colors.white,fontSize: 17),)
                     ],
                   ),
                   SizedBox(width: 15,),
-                  Icon(icon)
+                  Icon(icon,color: Colors.white,)
 
                 ],
               ),
