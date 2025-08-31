@@ -104,7 +104,7 @@ class MembershipPage extends StatelessWidget {
 
             /// >>> ======================= Carousel Section Start Here ================================
             SizedBox(
-              height: 150,
+              height: 130,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: 8,
