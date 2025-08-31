@@ -136,7 +136,7 @@ class MembershipPage extends StatelessWidget {
                                       Text("Smith.t",style: TextStyle(fontWeight: FontWeight.bold),),
                                       GestureDetector(
                                         onTap: () async {
-                                          final Uri url = Uri.parse("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                                          final Uri url = Uri.parse("https://www.youtube.com/watch?v=ic3XqDNHrHQ");
                                           // Try external app first
                                           try {
                                             await launchUrl(url, mode: LaunchMode.externalApplication,);
