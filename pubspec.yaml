@@ -60,6 +60,7 @@ flutter:
     - "assets/images/p3.png"
     - "assets/images/p4.png"
     - "assets/images/p5.png"
+    - "assets/images/motherchild.png"
   uses-material-design: true
 
 flutter_icons:

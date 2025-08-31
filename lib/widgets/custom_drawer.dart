@@ -1,3 +1,19 @@
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
+import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -30,23 +46,23 @@ class CustomDrawer extends StatelessWidget {
                 ],
               )
           ),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Membership", Icons.card_membership,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
            Divider(color: Colors.pink,thickness:1.5,),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
-          _buildDrawerItems(context, "Home", Icons.home),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
+          _buildDrawerItems(context, "Home", Icons.home,MembershipPage()),
         ],
       ),
     );
@@ -54,11 +70,13 @@ class CustomDrawer extends StatelessWidget {
 
 
 
-  Widget _buildDrawerItems(BuildContext context,String title,IconData icon){
+  Widget _buildDrawerItems(BuildContext context,String title,IconData icon,Widget navigatePage){
     return ListTile(
       title: Text(title,style: TextStyle(color: Colors.white),),
       leading: Icon(icon,color: Colors.white,),
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => navigatePage,));
+      },
     );
   }
 
