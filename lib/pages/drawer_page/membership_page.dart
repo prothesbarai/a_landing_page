@@ -111,7 +111,7 @@ class MembershipPage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(left: 8.0, right: index == 7 ? 8.0 : 0.0,),
                     child: Container(
                       width: MediaQuery.of(context).size.width / 1.2,
                       decoration: BoxDecoration(color: Color(0xfff6f6f6), borderRadius: BorderRadius.circular(10),border: Border.all(color: Colors.black.withValues(alpha: 0.1))),
