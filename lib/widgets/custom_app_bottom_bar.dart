@@ -6,7 +6,7 @@ class CustomAppBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.pink,
+      color: Colors.pink.shade700,
       notchMargin: 8,
       shape: CircularNotchedRectangle(),
       child: Row(

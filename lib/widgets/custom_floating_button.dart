@@ -8,7 +8,7 @@ class CustomFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       shape: CircleBorder(),
       onPressed: (){},
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.pink.shade700,
       child: Icon(Icons.add,color: Colors.white,),
     );
   }

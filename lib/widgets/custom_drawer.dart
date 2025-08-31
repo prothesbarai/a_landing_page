@@ -1,19 +1,4 @@
 import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
-import 'package:a_landing_page/pages/drawer_page/membership_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -27,10 +12,10 @@ class CustomDrawer extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         children: [
           DrawerHeader(
-            decoration: UnderlineTabIndicator(borderSide: BorderSide(color: Colors.pink,width: 1)),
+            decoration: UnderlineTabIndicator(borderSide: BorderSide(color: Colors.pink.shade700,width: 1)),
             child: Row(
                 children: [
-                  CircleAvatar(radius: 40,backgroundColor: Colors.pink,child: Icon(Icons.account_circle,size: 60,),),
+                  CircleAvatar(radius: 40,backgroundColor: Colors.pink.shade700,child: Icon(Icons.account_circle,size: 60,),),
                   SizedBox(width: 10,),
                   Expanded(
                     child: Column(

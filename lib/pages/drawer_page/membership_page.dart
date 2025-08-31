@@ -1,3 +1,4 @@
+import 'package:a_landing_page/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class MembershipPage extends StatelessWidget {
@@ -6,75 +7,85 @@ class MembershipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: 280,
-        margin: const EdgeInsets.only(top: 16,),
-        child: Stack(
+      extendBody: true,
+      appBar: CustomAppbar(pageTitle: "Membership Page"),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
           children: [
-            // Right side triangle background
-            Align(
-              alignment: Alignment.centerRight,
-              child: ClipPath(
-                clipper: TopRightTriangleClipper(),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: double.infinity,
-                  color: Colors.pink.shade700,
-                ),
-              ),
-            ),
-
-            // Foreground content (text + button + image)
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
+            Container(
+              height: 210,
+              margin: const EdgeInsets.only(top: 16,),
+              child: Stack(
                 children: [
-                  // Left side texts
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Save 220,040+ TK yearly\non Baby Care, Beauty, Pet Care, Grocery & more!",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            height: 1.4,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber,
-                            foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 12, horizontal: 20),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          child: const Text("Become a Member Now"),
-                        ),
-                      ],
+                  // Right side triangle background
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: ClipPath(
+                      clipper: TopRightTriangleClipper(),
+                      child: Container(
+                        width: 300,
+                        height: 200,
+                        color: Colors.pink.shade700,
+                      ),
                     ),
                   ),
 
-                  // Right side image
-                  Expanded(
-                    flex: 1,
-                    child: Image.asset(
-                      "assets/images/motherchild.png",
-                      height: 280,
-                      fit: BoxFit.fill,
-                    ),
+                  Row(
+                    children: [
+                      // Left side texts
+                      Expanded(
+                        flex: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Save 220,040+ TK yearly\non Baby Care, Beauty, Pet Care, Grocery & more!",
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black, height: 1.4,),
+                              ),
+                              const SizedBox(height: 50),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.amber,
+                                  foregroundColor: Colors.black,
+                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
+                                ),
+                                child: const Text("Become a Member Now",style: TextStyle(fontSize: 14),),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // Right side image
+                      Expanded(
+                        flex: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 2.0),
+                          child: Image.asset("assets/images/motherchild.png", height: 200, fit: BoxFit.fill,),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, Colors.pink.shade700,Colors.white,Colors.amber),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, Colors.amber,Colors.pink.shade700,Colors.black),
+             Container(color: Colors.pink.shade700,height: 5,),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, Colors.white,Colors.pink.shade700,Colors.black),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, Colors.pink.shade700,Colors.white,Colors.amber),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8.0),
+              child: Text("Get Paikaree Membership Card Now",style: TextStyle(color: Colors.pink.shade700,fontSize: 20, fontWeight: FontWeight.bold),),
+            ),
+
+            SizedBox(height: 90,)
           ],
         ),
       )
@@ -83,10 +94,71 @@ class MembershipPage extends StatelessWidget {
 }
 
 
+/// >>> =========== Top 4 Section Widget Build Start Here ===================
+Widget _buildSection(BuildContext context, String title, String description, String imgUrl, bool reverse, Color bgColor,Color titleColor,Color desColor){
+  return Container(
+    height: 200,
+    decoration: BoxDecoration(
+      color: bgColor,
+    ),
+    child: Row(
+      children: [
 
+        reverse ? Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 2.0,top: 2.0),
+            child: Image.asset(imgUrl, height: 200, fit: BoxFit.fill,),
+          ),
+        ): Expanded(
+          flex: 4,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),),
+                SizedBox(height: 15,),
+                Text(description, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),),
+              ],
+            ),
+          ),
+        ),
+
+        reverse ? Expanded(
+          flex: 4,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),textAlign: TextAlign.right,),
+                SizedBox(height: 15,),
+                Text(description, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),textAlign: TextAlign.right,),
+              ],
+            ),
+          ),
+        ) : Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 2.0,top: 2.0),
+            child: Image.asset(imgUrl, height: 200, fit: BoxFit.fill,),
+          ),
+        ),
+
+      ],
+    ),
+  );
+}
+/// <<< =========== Top 4 Section Widget Build End Here ===================
+
+
+/// >>>  Create Top Section Image BG shape
 class TopRightTriangleClipper extends CustomClipper<Path> {
   final double borderRadius;
-  TopRightTriangleClipper({this.borderRadius = 50.0});
+  TopRightTriangleClipper({this.borderRadius = 20.0});
 
   @override
   Path getClip(Size size) {
@@ -96,7 +168,7 @@ class TopRightTriangleClipper extends CustomClipper<Path> {
     path.lineTo(size.width * 0.3 + borderRadius, size.height);
     path.quadraticBezierTo(size.width * 0.3, size.height, size.width * 0.3, size.height - borderRadius,);
 
-    path.lineTo(size.width - borderRadius, 0);
+    path.lineTo(size.width + borderRadius, 0);
     path.quadraticBezierTo(size.width, 0, size.width, borderRadius,);
     path.lineTo(size.width, size.height);
 
@@ -107,9 +179,6 @@ class TopRightTriangleClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
-
-
-
 
 
 
