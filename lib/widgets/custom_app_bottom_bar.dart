@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../pages/utils/app_colors.dart';
+
 class CustomAppBottomBar extends StatelessWidget {
   const CustomAppBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.pink.shade700,
+      color: AppColors.primaryColor,
       notchMargin: 8,
       shape: CircularNotchedRectangle(),
       child: Row(
