@@ -9,8 +9,22 @@ import 'package:url_launcher/url_launcher.dart';
 class MembershipPage extends StatelessWidget {
   const MembershipPage({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
+
+
+    final List<Map<String, String>> plans = [
+      {"fee": "1000 TK", "validity": "1 Year Validity"},
+      {"fee": "600 TK", "validity": "6 Month Validity"},
+      {"fee": "100 TK", "validity": "3 Days Validity"},
+    ];
+
+
+
+
+
     return Scaffold(
       extendBody: true,
       appBar: CustomAppbar(pageTitle: "Membership Page"),
@@ -89,12 +103,43 @@ class MembershipPage extends StatelessWidget {
 
 
 
-            /// >>>  =============== Start MembershipCard Design Section ==============================
-            Container(
-
+            /// >>>  =============== Start MembershipCard Builder Section ==============================
+            SizedBox(
+              height: 300,
+              child: ListView.builder(
+                itemCount: 2,
+                padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  // First row in 1 items
+                  if (index == 0) {
+                    return memberShipCardDesignAndBuild(context, plans[0]['fee']!, plans[0]['validity']!,);
+                  } else {
+                    // Second row in 2 items
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: memberShipCardDesignAndBuild(context, plans[1]['fee']!, plans[1]['validity']!,),
+                          ),
+                        ),
+                        SizedBox(width: 8.0,),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: memberShipCardDesignAndBuild(context, plans[2]['fee']!,  plans[2]['validity']!,),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                },
+              ),
             ),
 
-            /// <<<  =============== End MembershipCard Design Section ================================
+            /// <<<  =============== End MembershipCard Builder Section ================================
 
 
 
@@ -217,6 +262,8 @@ class TopRightTriangleClipper extends CustomClipper<Path> {
 /// <<<  ========== Create Top Section Image BG shape End Here =================
 
 
+
+
 /// >>> =========== Top 4 Section Widget Build Start Here ======================
 Widget _buildSection(BuildContext context, String title, String description, String imgUrl, bool reverse, Color bgColor,Color titleColor,Color desColor, Widget navigatePage){
   return GestureDetector(
@@ -282,5 +329,32 @@ Widget _buildSection(BuildContext context, String title, String description, Str
 
 
 
+/// >>>  =============== Start MembershipCard Design And Functional Section ==============================
+Widget memberShipCardDesignAndBuild(BuildContext context ,String fee, String validity) {
+  return Container(
+    padding: EdgeInsets.all(16),
+    decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColors.primaryColor), borderRadius: BorderRadius.circular(12),),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text("Fee : $fee", style: TextStyle(fontSize: 16, color: AppColors.primaryColor)),
+        SizedBox(height: 4),
+        Text(validity, style: TextStyle(fontSize: 16, color: AppColors.primaryColor)),
+        SizedBox(height: 12),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor, foregroundColor: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))),
+          onPressed: () {
+            if (kDebugMode) {
+              print("Card : $fee");
+            }
+          },
+          child: Text("Login to Subscribe",style: TextStyle(),textAlign: TextAlign.center,),
+        ),
+      ],
+    ),
+  );
+}
+/// <<<  =============== End MembershipCard Design And Functional Section ==============================
 
 
