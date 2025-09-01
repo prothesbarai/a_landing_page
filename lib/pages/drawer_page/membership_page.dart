@@ -223,6 +223,32 @@ class MembershipPage extends StatelessWidget {
 
 
 
+            /// >>> Table Section Start Here ===================================
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0,left: 8.0,right: 8.0,),
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(color: Color(0xFFF4EFDF), borderRadius: BorderRadius.circular(12),),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('How much do you spend montly?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),),
+                    const SizedBox(height: 10),
+                    Table(
+                      columnWidths: const {0: FlexColumnWidth(2), 1: FlexColumnWidth(2), 2: FlexColumnWidth(1),},
+                      children: [
+                        _tableRow("Baby care", "Member price", "Vou. Save",true),
+                        _tableRow("Cetaphil...", "550", "670",false),
+                        _tableRow("Royal Ca...", "1090", "670",false),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            /// <<< Table Section End Here =====================================
+
+
             SizedBox(height: 90,)
           ],
         ),
@@ -260,8 +286,6 @@ class TopRightTriangleClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
 /// <<<  ========== Create Top Section Image BG shape End Here =================
-
-
 
 
 /// >>> =========== Top 4 Section Widget Build Start Here ======================
@@ -327,6 +351,27 @@ Widget _buildSection(BuildContext context, String title, String description, Str
 }
 /// <<< =========== Top 4 Section Widget Build End Here ========================
 
+
+/// >>> Table Row Items Design Start Here ======================================
+TableRow _tableRow(String title, String memberPrice, String savePrice, bool tHead) {
+  return TableRow(
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Text(title, style: tHead? TextStyle(fontWeight: FontWeight.w600, fontSize: 13,): TextStyle(fontSize: 12),),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Text(memberPrice, style: tHead? TextStyle(fontWeight: FontWeight.w600, fontSize: 13,): TextStyle(fontSize: 12),),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Text(savePrice, style: tHead? TextStyle(fontWeight: FontWeight.w600, fontSize: 13,): TextStyle(fontSize: 12),),
+      ),
+    ],
+  );
+}
+/// <<< Table Row Items Design End Here ========================================
 
 
 /// >>>  =============== Start MembershipCard Design And Functional Section ==============================
