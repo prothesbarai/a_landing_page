@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:a_landing_page/pages/drawer_page/product_page.dart';
 import 'package:a_landing_page/pages/drawer_page/profile_page.dart';
 import 'package:a_landing_page/widgets/custom_appbar.dart';
+import 'package:a_landing_page/widgets/see_more_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -72,7 +73,18 @@ class _MembershipPageState extends State<MembershipPage> {
   Widget build(BuildContext context) {
 
     final List<Map<String, String>> plans = [{"fee": "1000 TK", "validity": "1 Year Validity"}, {"fee": "600 TK", "validity": "6 Month Validity"}, {"fee": "100 TK", "validity": "3 Days Validity"},];
-
+    final List<Map<String, String>> usersCarousel = [
+      {"name": "Smith.t", "text": "I saved over \$200 in 3 months!", "youtube": "https://www.youtube.com/watch?v=ic3XqDNHrHQ", "image": "assets/images/user1.png",},
+      {"name": "Jane.d", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
+      {"name": "Asp Prothes", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
+      {"name": "Hemel", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
+      {"name": "Shreyasi", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
+      {"name": "Angkan", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
+      {"name": "Jane.d", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "",},
+      {"name": "Durga", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "",},
+      {"name": "Shampa", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "",},
+      {"name": "Shikha", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
+    ];
 
     return Scaffold(
       extendBody: true,
@@ -211,10 +223,11 @@ class _MembershipPageState extends State<MembershipPage> {
                 },
                 child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 8,
+                    itemCount: usersCarousel.length,
                     controller: _carouselController,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
+                      final user = usersCarousel[index];
                       return Padding(
                         padding: EdgeInsets.only(left: 8.0, right: index == 7 ? 8.0 : 0.0,),
                         child: Container(
@@ -226,22 +239,24 @@ class _MembershipPageState extends State<MembershipPage> {
                               children: [
                                 CircleAvatar(
                                   radius : 35,
-                                  child: Icon(Icons.person,size: 60,),
+                                  backgroundImage: user['image'] != null && user['image']!.isNotEmpty ? AssetImage(user['image']!) : null,
+                                  child: user['image'] == null || user['image']!.isEmpty ?  Icon(Icons.person,size: 60,) : null,
                                 ),
                                 SizedBox(width: 10,),
                                 Expanded(
                                   child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("\"I saved over \$200 in 3 months!\"",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 21),),
+                                      SeeMoreText(text: "${user['text']}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400,fontSize: 14)),
                                       SizedBox(height: 10,),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("Smith.t",style: TextStyle(fontWeight: FontWeight.bold),),
+                                          Text("${user['name']}",style: TextStyle(fontWeight: FontWeight.bold),),
                                           GestureDetector(
                                             onTap: () async {
-                                              final Uri url = Uri.parse("https://www.youtube.com/watch?v=ic3XqDNHrHQ");
+                                              final Uri url = Uri.parse("${user["youtube"]}");
                                               // Try external app first
                                               try {
                                                 await launchUrl(url, mode: LaunchMode.externalApplication,);

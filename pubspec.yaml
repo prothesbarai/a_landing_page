@@ -62,6 +62,8 @@ flutter:
     - "assets/images/p4.png"
     - "assets/images/p5.png"
     - "assets/images/motherchild.png"
+    - "assets/images/user1.png"
+    - "assets/images/user2.png"
   uses-material-design: true
 
 flutter_icons:
