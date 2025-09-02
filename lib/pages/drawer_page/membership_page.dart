@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:a_landing_page/pages/drawer_page/product_page.dart';
 import 'package:a_landing_page/pages/drawer_page/profile_page.dart';
 import 'package:a_landing_page/widgets/custom_appbar.dart';
@@ -19,8 +20,41 @@ class _MembershipPageState extends State<MembershipPage> {
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _membershipCardKey = GlobalKey();
 
+  final ScrollController _carouselController = ScrollController();
+  Timer? _timer;
+  double scrollPosition = 0;
+  final int itemCount = 8;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _startAutoScroll();
+  }
+
+  void _startAutoScroll() {
+    const duration = Duration(milliseconds: 50);
+    const scrollStep = 2.0;
+    _timer = Timer.periodic(duration, (_) {
+      if (_carouselController.hasClients) {
+        scrollPosition += scrollStep;
+        if (scrollPosition >= _carouselController.position.maxScrollExtent) {
+          scrollPosition = 0;
+          _carouselController.jumpTo(scrollPosition);
+        } else {
+          _carouselController.jumpTo(scrollPosition);
+        }
+      }
+    });
+  }
+
+
+
   @override
   void dispose() {
+    _timer?.cancel();
+    _carouselController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -72,7 +106,15 @@ class _MembershipPageState extends State<MembershipPage> {
                               const SizedBox(height: 50),
                               ElevatedButton(
                                 onPressed: () {
-                                  Scrollable.ensureVisible(_membershipCardKey.currentContext!, duration: const Duration(milliseconds: 600), curve: Curves.easeInOut,);
+                                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                                    final ctx = _membershipCardKey.currentContext;
+                                    if (ctx != null) {
+                                      Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 600), curve: Curves.easeInOut,);
+                                    } else {
+                                      _scrollController.animateTo(800, duration: const Duration(milliseconds: 600), curve: Curves.easeInOut,);
+                                      if (kDebugMode) print("MembershipCard section not built yet");
+                                    }
+                                  });
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColor.yellowAccent, foregroundColor: AppColor.primaryColor,
@@ -112,8 +154,6 @@ class _MembershipPageState extends State<MembershipPage> {
             ),
 
 
-
-
             /// >>>  =============== Start MembershipCard Builder Section ==============================
             ListView.builder(
               shrinkWrap: true,
@@ -147,17 +187,13 @@ class _MembershipPageState extends State<MembershipPage> {
             /// <<<  =============== End MembershipCard Builder Section ================================
 
 
-
-
-
-
-
             /// >>> ======================= Carousel Section Start Here ================================
             SizedBox(
               height: 130,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: 8,
+                controller: _carouselController,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -225,7 +261,6 @@ class _MembershipPageState extends State<MembershipPage> {
               ),
             ),
             /// <<< ======================= Carousel Section End Here ==================================
-
 
 
             /// >>> Table Section Start Here ===================================
