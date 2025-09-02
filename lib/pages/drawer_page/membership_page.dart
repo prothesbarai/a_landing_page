@@ -7,9 +7,23 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../gradiant_bg/gradiant_bg.dart';
 import '../../utils/app_colors.dart';
 
-class MembershipPage extends StatelessWidget {
+class MembershipPage extends StatefulWidget {
   const MembershipPage({super.key});
 
+  @override
+  State<MembershipPage> createState() => _MembershipPageState();
+}
+
+class _MembershipPageState extends State<MembershipPage> {
+
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _membershipCardKey = GlobalKey();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
 
   @override
@@ -22,6 +36,7 @@ class MembershipPage extends StatelessWidget {
       extendBody: true,
       appBar: CustomAppbar(pageTitle: "Membership Page"),
       body: SingleChildScrollView(
+        controller: _scrollController,
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
@@ -56,7 +71,9 @@ class MembershipPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 50),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Scrollable.ensureVisible(_membershipCardKey.currentContext!, duration: const Duration(milliseconds: 600), curve: Curves.easeInOut,);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColor.yellowAccent, foregroundColor: AppColor.primaryColor,
                                   padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -89,6 +106,7 @@ class MembershipPage extends StatelessWidget {
             _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, Colors.white,AppColor.primaryColor,Colors.black,ProfilePage()),
             _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, AppColor.primaryColor,Colors.white,AppColor.yellowAccent,ProductPage()),
             Padding(
+              key: _membershipCardKey,
               padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8.0),
               child: Text("Get Paikaree Membership Card Now",style: TextStyle(color: AppColor.primaryColor,fontSize: 20, fontWeight: FontWeight.bold),),
             ),
