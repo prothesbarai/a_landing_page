@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../pages/utils/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   const CustomFloatingButton({super.key});
@@ -10,7 +9,7 @@ class CustomFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       shape: CircleBorder(),
       onPressed: (){},
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColor.primaryColor,
       child: Icon(Icons.add,color: Colors.white,),
     );
   }

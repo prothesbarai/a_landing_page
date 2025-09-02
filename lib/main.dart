@@ -1,5 +1,5 @@
 import 'package:a_landing_page/pages/splash_screen/splash_screen.dart';
-import 'package:a_landing_page/pages/utils/app_colors.dart';
+import 'package:a_landing_page/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: false,
-        appBarTheme: AppBarThemeData(backgroundColor: AppColors.primaryColor,iconTheme: IconThemeData(color: Colors.white),centerTitle: true,),
+        appBarTheme: AppBarThemeData(backgroundColor: AppColor.primaryColor,iconTheme: IconThemeData(color: Colors.white),centerTitle: true,),
         drawerTheme: DrawerThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(20)))),
       ),
       home: SplashScreen(),

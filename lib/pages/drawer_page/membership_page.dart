@@ -1,10 +1,11 @@
 import 'package:a_landing_page/pages/drawer_page/product_page.dart';
 import 'package:a_landing_page/pages/drawer_page/profile_page.dart';
-import 'package:a_landing_page/pages/utils/app_colors.dart';
 import 'package:a_landing_page/widgets/custom_appbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../gradiant_bg/gradiant_bg.dart';
+import '../../utils/app_colors.dart';
 
 class MembershipPage extends StatelessWidget {
   const MembershipPage({super.key});
@@ -14,15 +15,7 @@ class MembershipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
-    final List<Map<String, String>> plans = [
-      {"fee": "1000 TK", "validity": "1 Year Validity"},
-      {"fee": "600 TK", "validity": "6 Month Validity"},
-      {"fee": "100 TK", "validity": "3 Days Validity"},
-    ];
-
-
-
+    final List<Map<String, String>> plans = [{"fee": "1000 TK", "validity": "1 Year Validity"}, {"fee": "600 TK", "validity": "6 Month Validity"}, {"fee": "100 TK", "validity": "3 Days Validity"},];
 
 
     return Scaffold(
@@ -42,7 +35,7 @@ class MembershipPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: ClipPath(
                       clipper: TopRightTriangleClipper(),
-                      child: Container(width: 300, height: 200, color: AppColors.primaryColor,),
+                      child: Container(width: 300, height: 200, color: AppColor.primaryColor,),
                     ),
                   ),
 
@@ -59,13 +52,13 @@ class MembershipPage extends StatelessWidget {
                             children: [
                               Text(
                                 "Save 220,040+ TK yearly\non Baby Care, Beauty, Pet Care, Grocery & more!",
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.primaryColor, height: 1.4,),
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.primaryColor, height: 1.4,),
                               ),
                               const SizedBox(height: 50),
                               ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.yellowAccent, foregroundColor: AppColors.primaryColor,
+                                  backgroundColor: AppColor.yellowAccent, foregroundColor: AppColor.primaryColor,
                                   padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
                                 ),
@@ -90,55 +83,49 @@ class MembershipPage extends StatelessWidget {
               ),
             ),
 
-            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, AppColors.primaryColor,Colors.white,AppColors.yellowAccent,ProductPage()),
-            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, AppColors.yellowAccent,AppColors.primaryColor,Colors.black,ProfilePage()),
-             Container(color: AppColors.primaryColor,height: 6,),
-            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, Colors.white,AppColors.primaryColor,Colors.black,ProfilePage()),
-            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, AppColors.primaryColor,Colors.white,AppColors.yellowAccent,ProductPage()),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, AppColor.primaryColor,Colors.white,AppColor.yellowAccent,ProductPage()),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, AppColor.yellowAccent,AppColor.primaryColor,Colors.black,ProfilePage()),
+             Container(color: AppColor.primaryColor,height: 6,),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", false, Colors.white,AppColor.primaryColor,Colors.black,ProfilePage()),
+            _buildSection(context, "Save UP TO 60,112 TK ON BABY CARE", "Become a member & buy every item at a wholesale rate", "assets/images/motherchild.png", true, AppColor.primaryColor,Colors.white,AppColor.yellowAccent,ProductPage()),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8.0),
-              child: Text("Get Paikaree Membership Card Now",style: TextStyle(color: AppColors.primaryColor,fontSize: 20, fontWeight: FontWeight.bold),),
+              child: Text("Get Paikaree Membership Card Now",style: TextStyle(color: AppColor.primaryColor,fontSize: 20, fontWeight: FontWeight.bold),),
             ),
 
 
 
 
             /// >>>  =============== Start MembershipCard Builder Section ==============================
-            SizedBox(
-              height: 300,
-              child: ListView.builder(
-                itemCount: 2,
-                padding: const EdgeInsets.only(left: 8.0,right: 8.0),
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  // First row in 1 items
-                  if (index == 0) {
-                    return memberShipCardDesignAndBuild(context, plans[0]['fee']!, plans[0]['validity']!,);
-                  } else {
-                    // Second row in 2 items
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: memberShipCardDesignAndBuild(context, plans[1]['fee']!, plans[1]['validity']!,),
-                          ),
-                        ),
-                        SizedBox(width: 8.0,),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: memberShipCardDesignAndBuild(context, plans[2]['fee']!,  plans[2]['validity']!,),
-                          ),
-                        ),
-                      ],
-                    );
-                  }
-                },
-              ),
-            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 1 + ((plans.length - 1) / 2).ceil(),
+              padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Padding(padding: const EdgeInsets.only(bottom: 8.0), child: memberShipCardDesignAndBuild(context, plans[0]),);
+                }
+                // Remaining cards in pairs
+                int firstIndex = 1 + (index - 1) * 2;
+                int secondIndex = firstIndex + 1;
+                final firstCard = plans[firstIndex];
+                final secondCard = secondIndex < plans.length ? plans[secondIndex] : null;
 
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 8.0),
+                  child: Row(
+                    children: [
+                      Expanded(child: memberShipCardDesignAndBuild(context, firstCard)),
+                      if (secondCard != null) ...[
+                        const SizedBox(width: 8.0),
+                        Expanded(child: memberShipCardDesignAndBuild(context, secondCard),),
+                      ],
+                    ],
+                  ),
+                );
+              },
+            ),
             /// <<<  =============== End MembershipCard Builder Section ================================
 
 
@@ -375,28 +362,39 @@ TableRow _tableRow(String title, String memberPrice, String savePrice, bool tHea
 
 
 /// >>>  =============== Start MembershipCard Design And Functional Section ==============================
-Widget memberShipCardDesignAndBuild(BuildContext context ,String fee, String validity) {
-  return Container(
-    padding: EdgeInsets.all(16),
-    decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColors.primaryColor), borderRadius: BorderRadius.circular(12),),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text("Fee : $fee", style: TextStyle(fontSize: 16, color: AppColors.primaryColor)),
-        SizedBox(height: 4),
-        Text(validity, style: TextStyle(fontSize: 16, color: AppColors.primaryColor)),
-        SizedBox(height: 12),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor, foregroundColor: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))),
-          onPressed: () {
-            if (kDebugMode) {
-              print("Card : $fee");
-            }
-          },
-          child: Text("Login to Subscribe",style: TextStyle(),textAlign: TextAlign.center,),
-        ),
-      ],
+Widget memberShipCardDesignAndBuild(BuildContext context , Map<String, String>? plan) {
+  return InkWell(
+    onTap: () {if (kDebugMode) print("Card tapped: ${plan?["fee"]}");},
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Stack(
+        children: [
+          Positioned.fill(child: plan?["fee"] == "1000 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard1000ColorPalette,) : plan?["fee"] == "600 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard600ColorPalette,) : MemberCardGradiantBgColor(colors: AppColor.memberCard100ColorPalette,),),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+            //decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColor.primaryColor), borderRadius: BorderRadius.circular(12),),
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("${plan?["fee"]}", style: TextStyle(fontSize: 16, color: AppColor.primaryColor)),
+                SizedBox(height: 4),
+                Text("${plan?["validity"]}", style: TextStyle(fontSize: 16, color: AppColor.primaryColor)),
+                SizedBox(height: 12),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor: AppColor.primaryColor, foregroundColor: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print("${plan?["fee"]}");
+                    }
+                  },
+                  child: Text("Login to Subscribe",style: TextStyle(),textAlign: TextAlign.center,),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
