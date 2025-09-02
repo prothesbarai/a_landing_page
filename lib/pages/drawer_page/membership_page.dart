@@ -18,13 +18,17 @@ class MembershipPage extends StatefulWidget {
 
 class _MembershipPageState extends State<MembershipPage> {
 
+  /// >>> ========== Used For Inner Section Scroll Start Here ==================
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _membershipCardKey = GlobalKey();
+  /// <<< ========== Used For Inner Section Scroll End Here ====================
 
+
+  /// >>> ========== Used For Carousel  Section Scroll Start Here ==============
   final ScrollController _carouselController = ScrollController();
   Timer? _timer;
   double scrollPosition = 0;
-  final int itemCount = 8;
+  /// <<< ========== Used For Carousel  Section Scroll End Here ================
 
 
 
@@ -37,11 +41,11 @@ class _MembershipPageState extends State<MembershipPage> {
   void _startAutoScroll() {
     _timer?.cancel();
     const duration = Duration(milliseconds: 50);
-    const scrollStep = 2.0;
+    const scrollStepPixel = 2.0;
     if (_carouselController.hasClients) {scrollPosition = _carouselController.offset;}
     _timer = Timer.periodic(duration, (_) {
       if (_carouselController.hasClients) {
-        scrollPosition += scrollStep;
+        scrollPosition += scrollStepPixel;
         if (scrollPosition >= _carouselController.position.maxScrollExtent) {
           scrollPosition = 0;
           _carouselController.jumpTo(scrollPosition);
