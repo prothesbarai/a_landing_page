@@ -4,6 +4,7 @@ import 'package:a_landing_page/pages/drawer_page/profile_page.dart';
 import 'package:a_landing_page/widgets/custom_appbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../gradiant_bg/gradiant_bg.dart';
 import '../../utils/app_colors.dart';
@@ -34,8 +35,10 @@ class _MembershipPageState extends State<MembershipPage> {
   }
 
   void _startAutoScroll() {
+    _timer?.cancel();
     const duration = Duration(milliseconds: 50);
     const scrollStep = 2.0;
+    if (_carouselController.hasClients) {scrollPosition = _carouselController.offset;}
     _timer = Timer.periodic(duration, (_) {
       if (_carouselController.hasClients) {
         scrollPosition += scrollStep;
@@ -48,6 +51,7 @@ class _MembershipPageState extends State<MembershipPage> {
       }
     });
   }
+
 
 
 
@@ -190,75 +194,87 @@ class _MembershipPageState extends State<MembershipPage> {
             /// >>> ======================= Carousel Section Start Here ================================
             SizedBox(
               height: 130,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 8,
-                controller: _carouselController,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: 8.0, right: index == 7 ? 8.0 : 0.0,),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 1.2,
-                      decoration: BoxDecoration(color: Color(0xfff6f6f6), borderRadius: BorderRadius.circular(10),border: Border.all(color: Colors.black.withValues(alpha: 0.1))),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 12.0),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius : 35,
-                              child: Icon(Icons.person,size: 60,),
-                            ),
-                            SizedBox(width: 10,),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("\"I saved over \$200 in 3 months!\"",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 21),),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  if(notification is UserScrollNotification){
+                    if(notification.direction != ScrollDirection.idle){
+                      _timer?.cancel();
+                    }else{
+                      _startAutoScroll();
+                    }
+                  }
+                  return true;
+                },
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 8,
+                    controller: _carouselController,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(left: 8.0, right: index == 7 ? 8.0 : 0.0,),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 1.2,
+                          decoration: BoxDecoration(color: Color(0xfff6f6f6), borderRadius: BorderRadius.circular(10),border: Border.all(color: Colors.black.withValues(alpha: 0.1))),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 12.0),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius : 35,
+                                  child: Icon(Icons.person,size: 60,),
+                                ),
+                                SizedBox(width: 10,),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("Smith.t",style: TextStyle(fontWeight: FontWeight.bold),),
-                                      GestureDetector(
-                                        onTap: () async {
-                                          final Uri url = Uri.parse("https://www.youtube.com/watch?v=ic3XqDNHrHQ");
-                                          // Try external app first
-                                          try {
-                                            await launchUrl(url, mode: LaunchMode.externalApplication,);
-                                          } catch (_) {
-                                            // Fallback: browser
-                                            if (await canLaunchUrl(url)) {
-                                              await launchUrl(url, mode: LaunchMode.platformDefault,);
-                                            } else {
-                                              if (kDebugMode) print("Could not launch $url");
-                                            }
-                                          }
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(color: Color(0xfff6f6f6), borderRadius: BorderRadius.circular(10),border: Border.all(color: Colors.black.withValues(alpha: 0.1))),
-                                          padding: EdgeInsets.symmetric(vertical: 2,horizontal: 10),
-                                          child: Row(
-                                            children: [
-                                              Text("Click here"),
-                                              SizedBox(width: 4,),
-                                              Icon(Icons.play_arrow)
-                                            ],
-                                          ),
-                                        ),
+                                      Text("\"I saved over \$200 in 3 months!\"",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 21),),
+                                      SizedBox(height: 10,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Smith.t",style: TextStyle(fontWeight: FontWeight.bold),),
+                                          GestureDetector(
+                                            onTap: () async {
+                                              final Uri url = Uri.parse("https://www.youtube.com/watch?v=ic3XqDNHrHQ");
+                                              // Try external app first
+                                              try {
+                                                await launchUrl(url, mode: LaunchMode.externalApplication,);
+                                              } catch (_) {
+                                                // Fallback: browser
+                                                if (await canLaunchUrl(url)) {
+                                                  await launchUrl(url, mode: LaunchMode.platformDefault,);
+                                                } else {
+                                                  if (kDebugMode) print("Could not launch $url");
+                                                }
+                                              }
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(color: Color(0xfff6f6f6), borderRadius: BorderRadius.circular(10),border: Border.all(color: Colors.black.withValues(alpha: 0.1))),
+                                              padding: EdgeInsets.symmetric(vertical: 2,horizontal: 10),
+                                              child: Row(
+                                                children: [
+                                                  Text("Click here"),
+                                                  SizedBox(width: 4,),
+                                                  Icon(Icons.play_arrow)
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       )
                                     ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                },
-              ),
+                      );
+                    },
+                  ),
+              )
             ),
             /// <<< ======================= Carousel Section End Here ==================================
 
