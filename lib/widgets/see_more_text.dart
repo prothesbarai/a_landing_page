@@ -5,15 +5,22 @@ import '../utils/app_colors.dart';
 class SeeMoreText extends StatelessWidget {
   final String text;
   final int maxLines;
-  final TextStyle? style;
-  const SeeMoreText({super.key, required this.text, this.maxLines = 2, this.style});
+  final TextStyle parentWidgetStyle;
+  final TextStyle dialogueWidgetStyle;
+  const SeeMoreText({
+    super.key,
+    required this.text,
+    required this.maxLines,
+    required this.parentWidgetStyle,
+    required this.dialogueWidgetStyle,
+  });
   
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (context, constraints) {
-          final span = TextSpan(text: text,style: style);
+          final span = TextSpan(text: text,style: parentWidgetStyle);
           final tp = TextPainter(
             text: span,
             maxLines: maxLines,
@@ -26,7 +33,7 @@ class SeeMoreText extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(text,style: style,maxLines: maxLines,overflow: TextOverflow.ellipsis,),
+              Text(text,style: parentWidgetStyle,maxLines: maxLines,overflow: TextOverflow.ellipsis,),
               if(isOverflow)...[
                 GestureDetector(
                   onTap: (){
@@ -44,7 +51,7 @@ class SeeMoreText extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Text(text, style: style)
+                                      Text(text, style: dialogueWidgetStyle)
                                     ],
                                   ),
                                 ),

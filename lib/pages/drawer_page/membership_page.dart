@@ -248,7 +248,12 @@ class _MembershipPageState extends State<MembershipPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SeeMoreText(text: "${user['text']}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400,fontSize: 14)),
+                                      SeeMoreText(
+                                        text: "${user['text']}",
+                                        parentWidgetStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w400,fontSize: 14),
+                                        dialogueWidgetStyle: TextStyle(color: Colors.pink,fontSize: 14),
+                                        maxLines: 2,
+                                      ),
                                       SizedBox(height: 10,),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
