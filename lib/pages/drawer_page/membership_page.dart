@@ -254,7 +254,7 @@ class _MembershipPageState extends State<MembershipPage> {
                                         alertDialogueCancelButtonText: "Ok",
                                         parentWidgetStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w400,fontSize: 14),
                                         dialogueWidgetStyle: TextStyle(color: Colors.pink,fontSize: 14),
-                                        seeMoreTextStyle: TextStyle(color: Colors.black),
+                                        seeMoreTextStyle: TextStyle(color: Colors.pink),
                                         maxLines: 2,
                                         dialogueBorderRadius: 16,
                                         alertDialogueCancelButtonTextStyle: TextStyle(color: Colors.white),
@@ -468,10 +468,10 @@ Widget memberShipCardDesignAndBuild(BuildContext context , Map<String, String>? 
       borderRadius: BorderRadius.circular(12),
       child: Stack(
         children: [
-          Positioned.fill(child: plan?["fee"] == "1000 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard1000ColorPalette,) : plan?["fee"] == "600 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard600ColorPalette,) : MemberCardGradiantBgColor(colors: AppColor.memberCard100ColorPalette,),),
+          //Positioned.fill(child: plan?["fee"] == "1000 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard1000ColorPalette,) : plan?["fee"] == "600 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard600ColorPalette,) : MemberCardGradiantBgColor(colors: AppColor.memberCard100ColorPalette,),),
           Container(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-            //decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColor.primaryColor), borderRadius: BorderRadius.circular(12),),
+            decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColor.primaryColor), borderRadius: BorderRadius.circular(12),),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

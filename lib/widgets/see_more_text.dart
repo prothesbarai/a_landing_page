@@ -53,7 +53,7 @@ class SeeMoreText extends StatelessWidget {
                             children: [
                               SingleChildScrollView(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.only(top: 24.0,left: 24.0,right: 24.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,7 +63,18 @@ class SeeMoreText extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              closeButton(context),
+                              Positioned(
+                                right: 5,
+                                top: 5,
+                                child: GestureDetector(
+                                  onTap: () => Navigator.pop(context),
+                                  child: Container(
+                                    decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle,border: Border.all(color: Colors.red,width: 1)),
+                                    padding: EdgeInsets.all(3),
+                                    child: Icon(Icons.close, color: Colors.red, size: 20),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
 
@@ -87,22 +98,6 @@ class SeeMoreText extends StatelessWidget {
         },
     );
   }
-}
-
-
-Widget closeButton(BuildContext context) {
-  return Positioned(
-    right: 5,
-    top: 5,
-    child: GestureDetector(
-      onTap: () => Navigator.pop(context),
-      child: Container(
-        decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle,border: Border.all(color: Colors.red,width: 1)),
-        padding: EdgeInsets.all(3),
-        child: Icon(Icons.close, color: Colors.red, size: 20),
-      ),
-    ),
-  );
 }
 
 
