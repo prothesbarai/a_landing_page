@@ -74,7 +74,7 @@ class _MembershipPageState extends State<MembershipPage> {
 
     final List<Map<String, String>> plans = [{"fee": "1000 TK", "validity": "1 Year Validity"}, {"fee": "600 TK", "validity": "6 Month Validity"}, {"fee": "100 TK", "validity": "3 Days Validity"},];
     final List<Map<String, String>> usersCarousel = [
-      {"name": "Smith.t", "text": "I saved over \$200 in 3 months!", "youtube": "https://www.youtube.com/watch?v=ic3XqDNHrHQ", "image": "assets/images/user1.png",},
+      {"name": "Smith.t", "text": "I saved over \$200 in 3 months!.. I saved over \$200 in 3 months!.. I saved over \$200 in 3 months!", "youtube": "https://www.youtube.com/watch?v=ic3XqDNHrHQ", "image": "assets/images/user1.png",},
       {"name": "Jane.d", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
       {"name": "Asp Prothes", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
       {"name": "Hemel", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
