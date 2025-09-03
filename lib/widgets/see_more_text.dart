@@ -32,13 +32,9 @@ class SeeMoreText extends StatelessWidget {
     return LayoutBuilder(
         builder: (context, constraints) {
           final span = TextSpan(text: mainMessageText,style: parentWidgetStyle);
-          final tp = TextPainter(
-            text: span,
-            maxLines: maxLines,
-            textDirection: TextDirection.ltr
-          )..layout(maxWidth: constraints.maxWidth);
+          final textPainter = TextPainter(text: span, maxLines: maxLines, textDirection: TextDirection.ltr)..layout(maxWidth: constraints.maxWidth);
           
-          final isOverflow =  tp.didExceedMaxLines;
+          final isOverflow =  textPainter.didExceedMaxLines;
           
           return Column(
             mainAxisSize: MainAxisSize.min,
