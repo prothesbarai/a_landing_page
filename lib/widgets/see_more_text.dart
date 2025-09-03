@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
-
 class SeeMoreText extends StatelessWidget {
-  final String text;
+  final String mainMessageText;
+  final String seeMoreText;
   final int maxLines;
   final TextStyle parentWidgetStyle;
   final TextStyle dialogueWidgetStyle;
+  final TextStyle seeMoreTextStyle;
+  final double dialogueBorderRadius;
+  final String alertDialogueCancelButtonText;
+  final ButtonStyle alertDialogueCancelButtonStyle;
+  final TextStyle alertDialogueCancelButtonTextStyle;
+
   const SeeMoreText({
     super.key,
-    required this.text,
+    required this.mainMessageText,
+    required this.seeMoreText,
     required this.maxLines,
     required this.parentWidgetStyle,
     required this.dialogueWidgetStyle,
+    required this.seeMoreTextStyle,
+    required this.dialogueBorderRadius,
+    required this.alertDialogueCancelButtonText,
+    required this.alertDialogueCancelButtonStyle,
+    required this.alertDialogueCancelButtonTextStyle,
   });
   
 
@@ -20,7 +31,7 @@ class SeeMoreText extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (context, constraints) {
-          final span = TextSpan(text: text,style: parentWidgetStyle);
+          final span = TextSpan(text: mainMessageText,style: parentWidgetStyle);
           final tp = TextPainter(
             text: span,
             maxLines: maxLines,
@@ -33,14 +44,14 @@ class SeeMoreText extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(text,style: parentWidgetStyle,maxLines: maxLines,overflow: TextOverflow.ellipsis,),
+              Text(mainMessageText,style: parentWidgetStyle,maxLines: maxLines,overflow: TextOverflow.ellipsis,),
               if(isOverflow)...[
                 GestureDetector(
                   onTap: (){
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(dialogueBorderRadius),),
                           contentPadding: EdgeInsets.zero,
                           content: Stack(
                             children: [
@@ -51,7 +62,7 @@ class SeeMoreText extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Text(text, style: dialogueWidgetStyle)
+                                      Text(mainMessageText, style: dialogueWidgetStyle)
                                     ],
                                   ),
                                 ),
@@ -63,14 +74,14 @@ class SeeMoreText extends StatelessWidget {
                           actions: [
                             ElevatedButton(
                                 onPressed: (){Navigator.pop(context);},
-                                style: ElevatedButton.styleFrom(backgroundColor: AppColor.primaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50),), padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),),
-                                child: Text("Ok",style: TextStyle(color: Colors.white),)
+                                style: alertDialogueCancelButtonStyle,
+                                child: Text(alertDialogueCancelButtonText,style: alertDialogueCancelButtonTextStyle)
                             )
                           ],
                         ),
                     );
                   },
-                  child: Text("See more",style: TextStyle(color: Colors.black),),
+                  child: Text(seeMoreText,style: seeMoreTextStyle),
                 )
               ]
             ],

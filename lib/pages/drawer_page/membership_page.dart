@@ -249,10 +249,16 @@ class _MembershipPageState extends State<MembershipPage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SeeMoreText(
-                                        text: "${user['text']}",
+                                        mainMessageText: "${user['text']}",
+                                        seeMoreText: "See more",
+                                        alertDialogueCancelButtonText: "Ok",
                                         parentWidgetStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w400,fontSize: 14),
                                         dialogueWidgetStyle: TextStyle(color: Colors.pink,fontSize: 14),
+                                        seeMoreTextStyle: TextStyle(color: Colors.black),
                                         maxLines: 2,
+                                        dialogueBorderRadius: 16,
+                                        alertDialogueCancelButtonTextStyle: TextStyle(color: Colors.white),
+                                        alertDialogueCancelButtonStyle: ElevatedButton.styleFrom(backgroundColor: AppColor.primaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50),), padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),),
                                       ),
                                       SizedBox(height: 10,),
                                       Row(
