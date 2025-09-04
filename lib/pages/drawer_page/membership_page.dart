@@ -93,7 +93,7 @@ class _MembershipPageState extends State<MembershipPage> {
       {"name": "Shikha", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
     ];
 
-    
+
     final List<Map<String, dynamic>> promoList = [
       {"title": "Save UP TO 60,112 TK ON BABY CARE", "subtitle": "Become a member & buy every item at a wholesale rate", "image": "assets/images/motherchild.png", "type" : 1},
       {"title": "Get 25% OFF on Fresh Fruits", "subtitle": "Daily essentials at the best wholesale prices", "image": "assets/images/motherchild.png", "type" : 2},
