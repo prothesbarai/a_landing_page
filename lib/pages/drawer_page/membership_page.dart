@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:a_landing_page/pages/store_page/store_page.dart';
+import 'package:a_landing_page/pages/store_page/store_page_one.dart';
+import 'package:a_landing_page/pages/store_page/store_page_two.dart';
 import 'package:a_landing_page/widgets/custom_appbar.dart';
 import 'package:a_landing_page/widgets/see_more_text.dart';
 import 'package:flutter/foundation.dart';
@@ -83,7 +84,7 @@ class _MembershipPageState extends State<MembershipPage> {
       {"name": "Shampa", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "",},
       {"name": "Shikha", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
     ];
-
+    
     final List<Map<String, dynamic>> promoList = [
       {"title": "Save UP TO 60,112 TK ON BABY CARE", "subtitle": "Become a member & buy every item at a wholesale rate", "image": "assets/images/motherchild.png", "type" : 1},
       {"title": "Get 25% OFF on Fresh Fruits", "subtitle": "Daily essentials at the best wholesale prices", "image": "assets/images/motherchild.png", "type" : 2},
@@ -205,7 +206,9 @@ class _MembershipPageState extends State<MembershipPage> {
 
               Widget navigatePage;
               if (dataList['type'] == 1) {
-                navigatePage = StorePage();
+                navigatePage = StorePageOne();
+              }else if(dataList['type'] == 2){
+                navigatePage = StorePageTwo();
               }else {
                 navigatePage = Scaffold(appBar: AppBar(title: Text("No Found",style: TextStyle(color: Colors.white),),backgroundColor: AppColor.primaryColor,), body: Center(child: Text("No page defined")),);
               }

@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/section_title.dart';
-import '../store_page/store_page.dart';
+import '../store_page/store_page_one.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -110,16 +110,16 @@ class _LandingPageState extends State<LandingPage> {
 
                     ),
 
-                    SectionTitle(title: "title0", storePage: "storePage0", pageRoute: StorePage()),
+                    SectionTitle(title: "title0", storePage: "storePage0", pageRoute: StorePageOne()),
                     _rectangleItemsBuilder(context, Color(0xff5e024f), Icons.account_balance, "title", "subTitle",5),
 
-                     SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePage()),
+                     SectionTitle(title: "title1", storePage: "storePage1", pageRoute: StorePageOne()),
                     _squareItemsBuilder(context, Colors.brown, productImg3, "Laptop",6),
-                    SectionTitle(title: "title2", storePage: "storePage2", pageRoute: StorePage()),
+                    SectionTitle(title: "title2", storePage: "storePage2", pageRoute: StorePageOne()),
                     _squareItemsBuilder(context, Colors.blueGrey, productImg5, "Product",7),
-                    SectionTitle(title: "title3", storePage: "storePage3", pageRoute: StorePage()),
+                    SectionTitle(title: "title3", storePage: "storePage3", pageRoute: StorePageOne()),
                     _squareItemsBuilder(context, Colors.indigo, productImg4, "Product",8),
-                    SectionTitle(title: "title4", storePage: "storePage4", pageRoute: StorePage()),
+                    SectionTitle(title: "title4", storePage: "storePage4", pageRoute: StorePageOne()),
                     _squareItemsBuilder(context, Colors.teal, productImg3, "Product",9),
 
 
