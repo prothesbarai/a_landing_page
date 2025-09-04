@@ -71,7 +71,15 @@ class _MembershipPageState extends State<MembershipPage> {
   @override
   Widget build(BuildContext context) {
 
-    final List<Map<String, dynamic>> plans = [{"fee": 1000, "validity": "1 Year Validity"}, {"fee": 600, "validity": "6 Month Validity"}, {"fee": 100, "validity": "3 Days Validity"},];
+    final List<Map<String, dynamic>> plans = [
+      {"fee": 1000, "validity": "1 Year Validity"},
+      {"fee": 600, "validity": "6 Month Validity"},
+      {"fee": 100, "validity": "3 Days Validity"},
+      {"fee": 50, "validity": "1 Days Validity"},
+      {"fee": 20, "validity": "1 Hour Validity"},
+    ];
+
+
     final List<Map<String, String>> usersCarousel = [
       {"name": "Smith.t", "text": "I saved over \$200 in 3 months!.. I saved over \$200 in 3 months!.. I saved over \$200 in 3 months!", "youtube": "https://www.youtube.com/watch?v=ic3XqDNHrHQ", "image": "assets/images/user1.png",},
       {"name": "Jane.d", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user2.png",},
@@ -85,6 +93,7 @@ class _MembershipPageState extends State<MembershipPage> {
       {"name": "Shikha", "text": "I improved my skills in 2 months!", "youtube": "https://www.youtube.com/watch?v=abcd1234", "image": "assets/images/user1.png",},
     ];
 
+    
     final List<Map<String, dynamic>> promoList = [
       {"title": "Save UP TO 60,112 TK ON BABY CARE", "subtitle": "Become a member & buy every item at a wholesale rate", "image": "assets/images/motherchild.png", "type" : 1},
       {"title": "Get 25% OFF on Fresh Fruits", "subtitle": "Daily essentials at the best wholesale prices", "image": "assets/images/motherchild.png", "type" : 2},
