@@ -18,7 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Screenshots
 
-![Screenshot 1](assets/images/screenshot1.png)
-![Screenshot 2](assets/images/screenshot2.png)
-![Screenshot 3](assets/images/screenshot3.png)
-![Screenshot 4](assets/images/screenshot4.png)
+<p float="left">
+  <img src="assets/images/screenshot1.png" width="200" />
+  <img src="assets/images/screenshot2.png" width="200" />
+  <img src="assets/images/screenshot3.png" width="200" />
+  <img src="assets/images/screenshot4.png" width="200" />
+</p>
