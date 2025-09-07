@@ -467,6 +467,7 @@ Widget _buildSection(BuildContext context, String title, String description, Str
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),),
                       SizedBox(height: 5,),
@@ -483,6 +484,7 @@ Widget _buildSection(BuildContext context, String title, String description, Str
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),textAlign: TextAlign.right,),
                       SizedBox(height: 5,),
