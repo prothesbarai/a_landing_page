@@ -469,9 +469,9 @@ Widget _buildSection(BuildContext context, String title, String description, Str
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),),
+                      Text(title, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),),
                       SizedBox(height: 5,),
-                      Text(description, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),),
+                      Text(description, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),),
                     ],
                   ),
                 ),
@@ -486,9 +486,9 @@ Widget _buildSection(BuildContext context, String title, String description, Str
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),textAlign: TextAlign.right,),
+                      Text(title, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: titleColor, height: 1.4,),textAlign: TextAlign.right,),
                       SizedBox(height: 5,),
-                      Text(description, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),textAlign: TextAlign.right,),
+                      Text(description, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: desColor, height: 1.4,),textAlign: TextAlign.right,),
                     ],
                   ),
                 ),
