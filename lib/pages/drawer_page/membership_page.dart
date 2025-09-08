@@ -194,6 +194,34 @@ class _MembershipPageState extends State<MembershipPage> {
                         ),
                       ],
                     ),
+
+                    Positioned(
+                        bottom: -.2,
+                        right: 215.2,
+                        child: Container(
+                          height: 8,
+                          width: 8,
+                          decoration: BoxDecoration(color: AppColor.primaryColor,borderRadius: BorderRadius.circular(50)),
+                        )
+                    ),
+                    /*Positioned(
+                          top: 4.5,
+                          right: -2.6,
+                          child: Container(
+                            height: 10.h,
+                            width: 8.w,
+                            decoration: BoxDecoration(color: AppColor.primaryColor ,borderRadius: BorderRadius.circular(50.r)),
+                          )
+                      ),*/
+                    Positioned(
+                        top: 4.5,
+                        right: -2.6,
+                        child: Container(
+                          height: 10,
+                          width: 8,
+                          decoration: BoxDecoration(color: AppColor.primaryColor ,borderRadius: BorderRadius.circular(50)),
+                        )
+                    ),
                   ],
                 ),
               ),
@@ -412,7 +440,7 @@ class _MembershipPageState extends State<MembershipPage> {
 /// >>>  ========== Create Top Section Image BG shape Start Here ===============
 class TopRightTriangleClipper extends CustomClipper<Path> {
   final double borderRadius;
-  TopRightTriangleClipper({this.borderRadius = 20.0});
+  TopRightTriangleClipper({this.borderRadius = 5.0});
 
   @override
   Path getClip(Size size) {
