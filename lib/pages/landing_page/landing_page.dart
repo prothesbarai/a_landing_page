@@ -17,7 +17,7 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
 
-  int length = 13;
+  int itemsLength = 13;
   bool showAll = false;
   String allImgUrl = "assets/images/allitems.png";
   String productImg = "assets/images/p1.png";
@@ -30,7 +30,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
 
-    int itemCount = showAll ? length : (length > 7 ? 8 : length);
+    int itemCount = showAll ? itemsLength + 1 : (itemsLength > 7 ? 8 : itemsLength);
 
     final screenWidth = MediaQuery.of(context).size.width;
     final crossAxisCount = 4;
@@ -81,6 +81,23 @@ class _LandingPageState extends State<LandingPage> {
                                   children: [
                                     Padding(padding: const EdgeInsets.all(8.0), child: Image.asset(allImgUrl, height: 50, width: 50,),),
                                     Text("All")
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if(showAll && index == itemsLength){
+                          return Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: GestureDetector(
+                              onTap: () {setState(() {showAll = false;});},
+                              child: Container(
+                                decoration: BoxDecoration(color: Color(0xffeefafa), borderRadius: BorderRadius.circular(10),),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.arrow_upward, size: 40, color: Colors.black54),
+                                    Text("Less"),
                                   ],
                                 ),
                               ),
