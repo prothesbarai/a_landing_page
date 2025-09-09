@@ -6,6 +6,7 @@ import 'package:a_landing_page/widgets/see_more_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/app_colors.dart';
 
@@ -574,10 +575,12 @@ Widget memberShipCardDesignAndBuild(BuildContext context , Map<String, dynamic>?
       borderRadius: BorderRadius.circular(12),
       child: Stack(
         children: [
+
+          Positioned.fill(child: Lottie.asset("assets/lottie/card.json", fit: BoxFit.fill, repeat: true,),),
           //Positioned.fill(child: plan?["fee"] == "1000 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard1000ColorPalette,) : plan?["fee"] == "600 TK" ? MemberCardGradiantBgColor(colors: AppColor.memberCard600ColorPalette,) : MemberCardGradiantBgColor(colors: AppColor.memberCard100ColorPalette,),),
           Container(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-            decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColor.primaryColor), borderRadius: BorderRadius.circular(12),),
+            //decoration: BoxDecoration(color: Color(0xFFF7F0DB), border: Border.all(color: AppColor.primaryColor), borderRadius: BorderRadius.circular(12),),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
